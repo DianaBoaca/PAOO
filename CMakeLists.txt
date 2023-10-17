@@ -7,24 +7,8 @@ project(Tutorial VERSION 1.0)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# configure a header file to pass some of the CMake settings
-# to the source code
-configure_file(TutorialConfig.h.in TutorialConfig.h)
+configure_file(Dreptunghi.h.in Dreptunghi.h)
 
-add_subdirectory(MathFunctions)
+add_executable(Lab4 main.cxx Dreptunghi.cxx)
 
-# add the executable
-add_executable(Tutorial tutorial.cxx)
-
-target_link_libraries(Tutorial PUBLIC MathFunctions)
-
-target_include_directories(Tutorial PUBLIC 
-                          "${PROJECT_BINARY_DIR}"
-                          "${PROJECT_SOURCE_DIR}/MathFunctions"
-                          )                       
-
-# add the binary tree to the search path for include files
-# so that we will find TutorialConfig.h
-target_include_directories(Tutorial PUBLIC
-                           "${PROJECT_BINARY_DIR}"
-                           )
+target_include_directories(Lab4 PUBLIC ${PROJECT_BINARY_DIR})
