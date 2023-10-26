@@ -19,16 +19,17 @@ Dreptunghi::Dreptunghi(int x, int y, char* culoare) {
 Dreptunghi::Dreptunghi(const Dreptunghi &dr) {
     this->x = dr.x;
     this->y = dr.y;
-    this->culoare = new char[strlen(dr.culoare) + 1];
-    strcpy(this->culoare, dr.culoare);
+    int l = strlen(dr.culoare) + 1;
+    this->culoare = new char[l];
+    memcpy(this->culoare, dr.culoare, l);
+    
 }
 
 Dreptunghi::Dreptunghi(Dreptunghi &&dr) {
     this->x = dr.x;
     this->y = dr.y;
-    int l = strlen(dr.culoare) + 1;
-    this->culoare = new char[l];
-    memcpy(this->culoare, dr.culoare, l);
+    this->culoare = new char[strlen(dr.culoare) + 1];
+    strcpy(this->culoare, dr.culoare);
 
     dr.x = 0;
     dr.y = 0;
