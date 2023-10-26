@@ -1,0 +1,12 @@
+class Dreptunghi {
+    private: int x, y;
+             char* culoare;
+    public: 
+        int aria();
+        char* getCuloare();
+        Dreptunghi();
+        Dreptunghi(int, int, char*);
+        Dreptunghi(const Dreptunghi&);
+        Dreptunghi(Dreptunghi&&);
+        ~Dreptunghi();
+};
