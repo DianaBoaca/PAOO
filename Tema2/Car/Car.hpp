@@ -9,7 +9,7 @@ namespace vehicle {
         char* color;
 
         public:
-        Car(int year, char* brand, char* color);
+        Car(int year, const char* brand, const char* color);
         ~Car();
         Car(const Car &otherCar);
         Car(Car &&otherCar);
@@ -20,6 +20,6 @@ namespace vehicle {
         void displayType() override;
         void startEngine() override;
 
-        virtual void paintCar(char* color);
+        void paintCar(const char* color);
     };
 }

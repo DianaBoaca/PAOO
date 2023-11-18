@@ -7,11 +7,11 @@ namespace vehicle {
         bool isCharged;
 
         public:
-        ElectricCar(int year, char* brand, char* color); 
+        ElectricCar(int year, const char* brand, const char* color); 
 
         void displayType() override;
         void startEngine() override;
-        void paintCar(char* color) override;
+        //void paintCar(const char* color) override;
 
         void chargeCar();
     };
