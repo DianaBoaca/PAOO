@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
 
     std::cout << "-------------------" << std::endl;
 
-    Car c4(std::move(c1));
+    Car c4(std::move(Car(2014, "Skodea", "white")));
     c4.displayType();
     c1.displayType();
 
