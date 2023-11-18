@@ -4,7 +4,7 @@
 
 using namespace vehicle;
 
-Car::Car(int year, char* brand, char* color) {
+Car::Car(int year, const char* brand, const char* color) {
     this->year = year;
 
     this->brand = new char[strlen(brand) + 1];
@@ -20,6 +20,8 @@ Car::~Car() {
 }
 
 Car::Car(const Car &otherCar) {
+    std::cout << "copy constr" << std::endl;
+
     this->year = otherCar.year;
 
     this->brand = new char[strlen(otherCar.brand) + 1];
@@ -31,6 +33,8 @@ Car::Car(const Car &otherCar) {
 }
 
 Car::Car(Car &&otherCar) {
+    std::cout << "move constr" << std::endl;
+
     this->year = otherCar.year;
     this->brand = otherCar.brand;
     this->color = otherCar.color;
@@ -40,7 +44,9 @@ Car::Car(Car &&otherCar) {
     otherCar.color = nullptr;
 }
 
-Car& Car::operator= (const Car &otherCar) {
+Car& Car::operator=(const Car &otherCar) {
+    std::cout << "copy assig" << std::endl;
+
     this->year = otherCar.year;
 
     delete[] this->brand;
@@ -55,6 +61,8 @@ Car& Car::operator= (const Car &otherCar) {
 }
 
 Car& Car::operator=(Car &&otherCar) {
+    std::cout << "move assig" << std::endl;
+
     this->year = otherCar.year;
 
     delete[] this->brand;
@@ -71,13 +79,20 @@ Car& Car::operator=(Car &&otherCar) {
 }
 
 void Car::displayType() {
-    std::cout << "This is a car!" << std::endl;
+    if(this->color == nullptr) {
+        std::cout << "This car has been deleted!" <<std::endl;
+        return;
+    }
+        
+    std::cout << "This is a " << this->color << " car!" << std::endl;
 }
 
 void Car::startEngine() {
     std::cout << "The engine is on!" << std::endl;
 }
 
-void Car::paintCar(char* color) {
-    this->color = color;
+void Car::paintCar(const char* color) {
+    delete[] this->color;
+    this->color = new char[strlen(color) + 1];
+    strcpy(this->color, color);
 }

@@ -6,6 +6,8 @@ using namespace vehicle;
 
 Bus::Bus(int capacity, const char* agency) {
     this->capacity = capacity;
+
+    this->agency = new char[strlen(agency) + 1];
     strcpy(this->agency, agency);
 }
 
@@ -22,5 +24,5 @@ void Bus::startEngine() {
 }
 
 void Bus::stopInStation(const char* station) {
-    std::cout << "The bus stopped in " << station << "!" << std::endl;
+    std::cout << "The bus stopped at " << station << "!" << std::endl;
 }
