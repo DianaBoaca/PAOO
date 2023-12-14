@@ -10,8 +10,6 @@ namespace vehicle {
         ElectricCar(int year, const char* brand, const char* color); 
 
         void displayType() override;
-        void startEngine() override;
-        //void paintCar(const char* color) override;
 
         void chargeCar();
     };

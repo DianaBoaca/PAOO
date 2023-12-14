@@ -1,8 +1,14 @@
 #include "Car.hpp"
 #include <iostream>
 #include <cstring>
+#include <unistd.h>
+#include <mutex>
 
 using namespace vehicle;
+using std::mutex;
+
+pthread_mutex_t mutex;
+int Car::carsStarted;
 
 Car::Car(int year, const char* brand, const char* color) {
     this->year = year;
@@ -87,8 +93,13 @@ void Car::displayType() {
     std::cout << "This is a " << this->color << " car!" << std::endl;
 }
 
-void Car::startEngine() {
-    std::cout << "The engine is on!" << std::endl;
+void *Car::startEngine(void* arg) {
+    pthread_mutex_lock(&mutex);
+    carsStarted++;
+    std::cout << "The engine is on! - thread " << *(int*)arg << std::endl;
+    std::cout << carsStarted << " cars started!" <<std::endl;
+    pthread_mutex_unlock(&mutex);
+    pthread_exit(NULL);
 }
 
 void Car::paintCar(const char* color) {

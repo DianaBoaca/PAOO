@@ -10,7 +10,6 @@ namespace vehicle {
         ~Bus();
 
         void displayType() override;
-        void startEngine() override;
         
         void stopInStation(const char* station);
     };

@@ -11,10 +11,6 @@ void ElectricCar::displayType() {
     std::cout << "This is a " << this->color <<" electric car!" << std::endl;
 }
 
-void ElectricCar::startEngine() {
-    std::cout << "The engine is on!" << std::endl;
-}
-
 void ElectricCar::chargeCar() {
     isCharged = true;
     std::cout << "The car has been charged!" << std::endl;

@@ -13,7 +13,8 @@ add_executable(Tema2 main.cpp)
 
 target_link_libraries(Tema2 PUBLIC vehicle bus car electric)
 
-target_include_directories(Tema2 PUBLIC "${PROJECT_SOURCE_DIR}/Auto" 
+target_include_directories(Tema2 PUBLIC "${PROJECT_SOURCE_DIR}"
+                                        "${PROJECT_SOURCE_DIR}/Auto" 
                                         "${PROJECT_SOURCE_DIR}/Car/"
                                         "${PROJECT_SOURCE_DIR}/Bus"
                             )    
