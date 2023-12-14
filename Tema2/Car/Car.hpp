@@ -1,5 +1,6 @@
 #pragma once
 #include "Auto.hpp"
+#include <pthread.h>
 
 namespace vehicle {
     class Car : public Auto {
@@ -7,6 +8,7 @@ namespace vehicle {
         int year;
         char* brand;
         char* color;
+        static int carsStarted;
 
         public:
         Car(int year, const char* brand, const char* color);
@@ -18,8 +20,8 @@ namespace vehicle {
         Car& operator=(Car &&otherCar);
 
         void displayType() override;
-        void startEngine() override;
 
-        void paintCar(const char* color);
+        static void *startEngine(void* arg);
+        virtual void paintCar(const char* color);
     };
 }
